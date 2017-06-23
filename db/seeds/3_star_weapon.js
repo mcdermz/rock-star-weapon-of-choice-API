@@ -6,8 +6,9 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('star_weapon').insert([
         {id: 1, star_id: 1, weapon_id: 1},
-        {id: 2, star_id: 2, weapon_id: 2},
-        {id: 3, star_id: 3, weapon_id: 3}
+        {id: 2, star_id: 1, weapon_id: 4},
+        {id: 3, star_id: 2, weapon_id: 2},
+        {id: 4, star_id: 3, weapon_id: 3}
       ]);
     })
     .then(() =>{

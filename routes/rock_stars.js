@@ -19,10 +19,9 @@ function rockStarsIndex(req, res, next) {
 function rockStarsShow(req, res, next) {
   const id = req.params.id
 
-  db('rock_stars').where({ id })
+  db.raw(`select rock_stars.name, json_agg((weapons.make, weapons.model)) as weapons from weapons inner join star_weapon on weapons.id = star_weapon.weapon_id inner join rock_stars on star_id = rock_stars.id where rock_stars.id = ${id} group by rock_stars.name;`)
   .then(response => {
-    const rockStar = response[0]
-    res.json(rockStar)
+    res.json(response.rows[0])
   })
   .catch(err => {
     next(err)
@@ -30,3 +29,6 @@ function rockStarsShow(req, res, next) {
 }
 
 module.exports = router;
+// select rock_stars.name, json_agg((weapons.make, weapons.model)) as weapons from weapons inner join star_weapon on weapons.id = star_weapon.weapon_id inner join rock_stars on star_id = rock_stars.id where rock_stars.id = 1 group by rock_stars.name;
+
+// select rock_stars.name, json_object_agg(((make, weapons.make),(model, weapons.model))) as weapons from weapons inner join star_weapon on weapons.id = star_weapon.weapon_id inner join rock_stars on star_id = rock_stars.id where rock_stars.id = 1 group by rock_stars.name;
