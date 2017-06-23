@@ -21,7 +21,8 @@ function rockStarsShow(req, res, next) {
 
   db('rock_stars').where({ id })
   .then(response => {
-    res.json(response)
+    const rockStar = response[0]
+    res.json(rockStar)
   })
   .catch(err => {
     next(err)
