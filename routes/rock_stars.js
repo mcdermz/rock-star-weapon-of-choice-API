@@ -30,8 +30,8 @@ function rockStarsShow(req, res, next) {
 }
 
 function rockStarsPost(req, res, next){
-  const { name } = req.body
-  db('rock_stars').insert({ name }, 'id')
+  const { name, image } = req.body
+  db('rock_stars').insert({ name, image }, 'id')
   .then(response => {
     res.send(response)
   })
