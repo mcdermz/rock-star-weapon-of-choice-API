@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const rock_stars = require('./routes/rock_stars');
 const weapons = require('./routes/weapons')
+const star_weapon = require('./routes/star_weapon')
 
 const app = express();
 
@@ -23,9 +24,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/stars', rock_stars);
+app.use('/', index)
+app.use('/stars', rock_stars)
 app.use('/weapons', weapons)
+app.use('/star-weapon', star_weapon)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
