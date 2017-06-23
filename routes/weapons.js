@@ -7,11 +7,25 @@ router.get('/', weaponsIndex)
 router.get('/:id', weaponsShow)
 
 function weaponsIndex(req, res, next) {
-  res.send('the many axes of destiny!')
+  db('weapons')
+  .then(response => {
+    res.json(response)
+  })
+  .catch(err => {
+    next(err)
+  })
 }
 
 function weaponsShow(req, res, next) {
-  res.send('the ONLY axe of destiny')
+  const id = req.params.id
+
+  db('weapons').where({ id })
+  .then(response => {
+    res.json(response)
+  })
+  .catch(err => {
+    next(err)
+  })
 }
 
 module.exports = router

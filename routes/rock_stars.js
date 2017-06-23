@@ -12,7 +12,7 @@ function rockStarsIndex(req, res, next) {
     res.json(response)
   })
   .catch(err => {
-    res.send(err)
+    next(err)
   })
 }
 
@@ -24,7 +24,7 @@ function rockStarsShow(req, res, next) {
     res.json(response)
   })
   .catch(err => {
-    res.send(err)
+    next(err)
   })
 }
 
