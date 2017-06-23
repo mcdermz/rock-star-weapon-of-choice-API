@@ -7,7 +7,8 @@ exports.seed = function(knex, Promise) {
       return knex('rock_stars').insert([
         {id: 1, name: 'Jimmy Page', image: 'http://www.stryder.de/pics/page_dragon2.jpg'},
         {id: 2, name: 'Stevie Ray Vaughan', image: 'http://thebluesmobile.com/wp-content/uploads/2014/07/stevierayvaughanfeatured.jpg'},
-        {id: 3, name: 'Eddie Van Halen', image: 'http://ultimateclassicrock.com/files/2013/01/Eddie-Van-Halen.jpg'}
+        {id: 3, name: 'Eddie Van Halen', image: 'http://ultimateclassicrock.com/files/2013/01/Eddie-Van-Halen.jpg'},
+        {id: 4, name: 'Jimi Hendrix', image: 'https://blackcablondon.files.wordpress.com/2014/08/jimi-hendrix-with-guitar.jpg'}
       ]);
     })
     .then(() => {
