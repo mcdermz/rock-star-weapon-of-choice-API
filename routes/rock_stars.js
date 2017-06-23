@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db/knex.js')
 
-/* GET users listing. */
+/* GET stars listing. */
 router.get('/', rockStarsIndex)
 router.get('/:id', rockStarsShow)
 

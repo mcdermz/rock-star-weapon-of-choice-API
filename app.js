@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
 const rock_stars = require('./routes/rock_stars');
+const weapons = require('./routes/weapons')
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/stars', rock_stars);
+app.use('/weapons', weapons)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
