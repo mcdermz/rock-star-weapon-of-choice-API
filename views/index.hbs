@@ -1,2 +1,33 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>ROCK STAR:</h1>
+    <h2>Weapon of Choice</h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 col-lg-2 col-md-2"></div>
+    <div class="col-lg-8 col-md-8 col-sm-8">
+      <h1 class="text-center">Try it out!</h1>
+      <div class="input-group">
+        <span class="input-group-addon">http://localhost:3000/api/</span>
+        <input type="text" class="form-control" id="request-url-input" aria-describedby="basic-addon3" placeholder="stars">
+        <span class="input-group-btn">
+          <button id="request-btn" class="btn btn-primary" type="button">Request</button>
+        </span>
+      </div>
+      <small>Psst, need a hint? Try
+        <a href="#">
+          <i>stars/1</i>
+        </a> or
+        <a href="#">
+          <i>weapons/2</i>
+        </a>
+      </small>
+      <h4>Response:</h4>
+      <div class="well">
+        <pre id="responseOutput" class="pre-scrollable">
+        </pre>
+      </div>
+    </div>
+    <div class="col-sm-2 col-lg-2 col-md-2"></div>
+  </div>
+</div>

@@ -25,9 +25,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index)
-app.use('/stars', rock_stars)
-app.use('/weapons', weapons)
-app.use('/star-weapon', star_weapon)
+app.use('/api/stars', rock_stars)
+app.use('/api/weapons', weapons)
+app.use('/api/star-weapon', star_weapon)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
