@@ -20,7 +20,7 @@ function weaponsIndex(req, res, next) {
 function weaponsShow(req, res, next) {
   const id = req.params.id
 
-  db.raw(`SELECT weapons.make, weapons.model, weapons.image, JSON_AGG(rock_stars) AS rock_stars FROM rock_stars INNER JOIN star_weapon ON rock_stars.id = star_weapon.star_id INNER JOIN weapons ON weapon_id = weapons.id WHERE weapons.id = ${id} GROUP BY weapons.id;`)
+  db.raw(`SELECT weapons.id, weapons.make, weapons.model, weapons.image, JSON_AGG(rock_stars) AS rock_stars FROM rock_stars INNER JOIN star_weapon ON rock_stars.id = star_weapon.star_id INNER JOIN weapons ON weapon_id = weapons.id WHERE weapons.id = ${id} GROUP BY weapons.id;`)
   .then(response => {
     (response.rowCount > 0) ?
       res.json(response.rows[0]) :

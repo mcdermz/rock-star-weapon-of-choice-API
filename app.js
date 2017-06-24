@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index)
-app.use('/api/stars', rock_stars)
+app.use('/api/rock-stars', rock_stars)
 app.use('/api/weapons', weapons)
 app.use('/api/star-weapon', star_weapon)
 
@@ -43,7 +43,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  const errorMessage = `ERROR! ${err.status} - ${err.message} \nPlease make sure your endpoints start with either '/api/stars' or '/api/weapons'`
+  const errorMessage = `ERROR! ${err.status} - ${err.message} \nPlease make sure your endpoints start with either '/api/rock-stars' or '/api/weapons'`
 
   res.status(err.status || 500);
   res.send(errorMessage);
