@@ -9,13 +9,7 @@ router.post('/', rockStarsPost)
 router.get('/:id', rockStarsShow)
 
 function rockStarsIndex(req, res, next) {
-  db('rock_stars')
-  .then(response => {
-    res.json(response)
-  })
-  .catch(err => {
-    next(err)
-  })
+  return query.findAll('rock_stars', res, next)
 }
 
 function rockStarsShow(req, res, next) {
@@ -34,6 +28,5 @@ function rockStarsPost(req, res, next){
     next(err)
   })
 }
-//select rock_stars.name, rock_stars.image, json_agg(weapons) as weapons from weapons inner join star_weapon on weapons.id = star_weapon.weapons_id inner join rock_stars on rock_stars_id = rock_stars.id where rock_stars.id = 1 group by rock_stars.id;
 
 module.exports = router;

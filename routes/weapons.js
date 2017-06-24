@@ -9,30 +9,19 @@ router.post('/', weaponsPost)
 router.get('/:id', weaponsShow)
 
 function weaponsIndex(req, res, next) {
-  db('weapons')
-  .then(response => {
-    res.json(response)
-  })
-  .catch(err => {
-    next(err)
-  })
+  return query.findAll('weapons', res, next)
 }
 
 function weaponsShow(req, res, next) {
-  const entity = 'weapons'
   const id = req.params.id
-  return query.findById(entity, id, res, next)
+
+  return query.findById('weapons', id, res, next)
 }
 
 function weaponsPost(req, res, next){
   const { make, model, image } = req.body
-  db('weapons').insert({ make, model, image }, 'id')
-  .then(response => {
-    res.send(response)
-  })
-  .catch(err => {
-    next(err)
-  })
+
+  return query.postEntity('weapons', { make, model, image }, res, next)
 }
 
 module.exports = router
