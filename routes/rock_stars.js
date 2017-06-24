@@ -20,9 +20,11 @@ function rockStarsIndex(req, res, next) {
 function rockStarsShow(req, res, next) {
   const id = req.params.id
 
-  db.raw(`select rock_stars.name, rock_stars.image, json_agg((weapons.make, weapons.model, weapons.image)) as weapons from weapons inner join star_weapon on weapons.id = star_weapon.weapon_id inner join rock_stars on star_id = rock_stars.id where rock_stars.id = ${id} group by rock_stars.id;`)
+  db.raw(`SELECT rock_stars.name, rock_stars.image, JSON_AGG(weapons) AS weapons FROM weapons INNER JOIN star_weapon ON weapons.id = star_weapon.weapon_id INNER JOIN rock_stars ON star_id = rock_stars.id WHERE rock_stars.id = ${id} GROUP BY rock_stars.id;`)
   .then(response => {
-    res.json(response.rows[0])
+    (response.rowCount > 0) ?
+      res.json(response.rows[0]) :
+      res.send('No Rock Star with that ID exists!')
   })
   .catch(err => {
     next(err)
@@ -39,5 +41,6 @@ function rockStarsPost(req, res, next){
     next(err)
   })
 }
+//select rock_stars.name, rock_stars.image, json_agg(weapons) as weapons from weapons inner join star_weapon on weapons.id = star_weapon.weapon_id inner join rock_stars on star_id = rock_stars.id where rock_stars.id = 1 group by rock_stars.id;
 
 module.exports = router;

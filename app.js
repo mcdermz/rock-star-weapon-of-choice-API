@@ -43,8 +43,10 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
+  const errorMessage = `ERROR! ${err.status} - ${err.message} \nPlease make sure your endpoints start with either '/api/stars' or '/api/weapons'`
+
   res.status(err.status || 500);
-  res.render('error');
+  res.send(errorMessage);
 });
 
 module.exports = app;
