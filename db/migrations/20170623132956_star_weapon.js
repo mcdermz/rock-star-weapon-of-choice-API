@@ -2,8 +2,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('star_weapon', (table) => {
     table.increments()
-    table.integer('star_id').notNullable()
-    table.integer('weapon_id').notNullable()
+    table.integer('rock_stars_id').notNullable()
+    table.integer('weapons_id').notNullable()
   })
 };
 

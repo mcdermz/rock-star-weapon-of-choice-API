@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../db/knex.js')
+const query = require('./queries.js')
 
 /* GET stars listing. */
 router.get('/', rockStarsIndex)
@@ -18,17 +19,9 @@ function rockStarsIndex(req, res, next) {
 }
 
 function rockStarsShow(req, res, next) {
+  const entity = 'rock_stars'
   const id = req.params.id
-
-  db.raw(`SELECT rock_stars.id, rock_stars.name, rock_stars.image, JSON_AGG(weapons) AS weapons FROM weapons INNER JOIN star_weapon ON weapons.id = star_weapon.weapon_id INNER JOIN rock_stars ON star_id = rock_stars.id WHERE rock_stars.id = ${id} GROUP BY rock_stars.id;`)
-  .then(response => {
-    (response.rowCount > 0) ?
-      res.json(response.rows[0]) :
-      res.send('No Rock Star with that ID exists!')
-  })
-  .catch(err => {
-    next(err)
-  })
+  return query.findById(entity, id, res, next)
 }
 
 function rockStarsPost(req, res, next){
@@ -41,6 +34,6 @@ function rockStarsPost(req, res, next){
     next(err)
   })
 }
-//select rock_stars.name, rock_stars.image, json_agg(weapons) as weapons from weapons inner join star_weapon on weapons.id = star_weapon.weapon_id inner join rock_stars on star_id = rock_stars.id where rock_stars.id = 1 group by rock_stars.id;
+//select rock_stars.name, rock_stars.image, json_agg(weapons) as weapons from weapons inner join star_weapon on weapons.id = star_weapon.weapons_id inner join rock_stars on rock_stars_id = rock_stars.id where rock_stars.id = 1 group by rock_stars.id;
 
 module.exports = router;

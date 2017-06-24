@@ -5,9 +5,9 @@ const db = require('../db/knex.js')
 router.post('/', starWeaponPost)
 
 function starWeaponPost(req, res, next) {
-  const { star_id, weapon_id } = req.body
+  const { rock_stars_id, weapons_id } = req.body
 
-  db('star_weapon').insert({ star_id, weapon_id  }, 'id')
+  db('star_weapon').insert({ rock_stars_id, weapons_id  }, 'id')
   .then(response => {
     res.send(response)
   })

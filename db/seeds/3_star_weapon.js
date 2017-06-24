@@ -5,11 +5,11 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('star_weapon').insert([
-        {id: 1, star_id: 1, weapon_id: 1},
-        {id: 2, star_id: 1, weapon_id: 4},
-        {id: 3, star_id: 2, weapon_id: 2},
-        {id: 4, star_id: 3, weapon_id: 3},
-        {id: 5, star_id: 4, weapon_id: 2}
+        {id: 1, rock_stars_id: 1, weapons_id: 1},
+        {id: 2, rock_stars_id: 1, weapons_id: 4},
+        {id: 3, rock_stars_id: 2, weapons_id: 2},
+        {id: 4, rock_stars_id: 3, weapons_id: 3},
+        {id: 5, rock_stars_id: 4, weapons_id: 2}
       ]);
     })
     .then(() =>{

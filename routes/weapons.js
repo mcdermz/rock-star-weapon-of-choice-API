@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../db/knex.js')
+const query = require('./queries.js')
 
 /* GET weapons listing. */
 router.get('/', weaponsIndex)
@@ -18,17 +19,9 @@ function weaponsIndex(req, res, next) {
 }
 
 function weaponsShow(req, res, next) {
+  const entity = 'weapons'
   const id = req.params.id
-
-  db.raw(`SELECT weapons.id, weapons.make, weapons.model, weapons.image, JSON_AGG(rock_stars) AS rock_stars FROM rock_stars INNER JOIN star_weapon ON rock_stars.id = star_weapon.star_id INNER JOIN weapons ON weapon_id = weapons.id WHERE weapons.id = ${id} GROUP BY weapons.id;`)
-  .then(response => {
-    (response.rowCount > 0) ?
-      res.json(response.rows[0]) :
-      res.send('No weapon with that ID exists!')
-  })
-  .catch(err => {
-    next(err)
-  })
+  return query.findById(entity, id, res, next)
 }
 
 function weaponsPost(req, res, next){
