@@ -26,10 +26,9 @@ function findById(entity1, id, res, next) {
   WHERE ${entity1}.id = ${id}
   GROUP BY ${entity1}.id;`)
   .then(response => {
-
     (response.rowCount > 0) ?
       res.json(response.rows[0]) :
-      res.send(`No ${errorSubject} with that ID exists!`)
+      res.send(`Either no ${errorSubject} with that ID exists, or it does not have any associations!`)
   })
   .catch(err => {
     next(err)
@@ -37,9 +36,9 @@ function findById(entity1, id, res, next) {
 }
 
 function postEntity(entity, dataObj, res, next) {
-  db(entity).insert(dataObj, 'id')
+  return db(entity).insert(dataObj, 'id')
   .then(response => {
-    res.send(response)
+    return response
   })
   .catch(err => {
     next(err)
