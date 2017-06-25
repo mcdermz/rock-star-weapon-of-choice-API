@@ -1,12 +1,18 @@
-<div class="container">
-  <div class="jumbotron text-center">
-    <h1>ROCK STAR:</h1>
-    <h2>Weapon of Choice</h2>
+<div class="jumbotron text-center">
+  <h1>ROCK STAR:</h1>
+  <h2>Weapon of Choice</h2>
+  <br>
+  <div class="row">
+    <div class="col-sm-3 col-lg-3 col-md-3"></div>
+    <div class="col-sm-6 col-lg-6 col-md-6">
+      <p class="lead">No rock star worth their rhinestones ever hits the stage without brandishing their weapon of choice! Use this API to discover the arsenal of your favorite artists or, vice versa, discover who prefers any particular face-melting instrument.</p>
+    </div>
   </div>
+</div>
+<div class="container">
   <div class="row">
     <div class="col-sm-2 col-lg-2 col-md-2"></div>
     <div class="col-lg-8 col-md-8 col-sm-8">
-      <p>No rock star worth their rhinestones ever hits the stage without brandishing their weapon of choice! Use this API to discover the arsenal of your favorite artists or, vice versa, discover who prefers any particular face-melting instrument.</p>
       <h1 class="text-center">Try it out!</h1>
       <div class="input-group">
         <span class="input-group-addon">http://localhost:3000/api/</span>
@@ -31,19 +37,34 @@
     </div>
     <div class="col-sm-2 col-lg-2 col-md-2"></div>
   </div>
+  <br>
   <div class="row">
-    <div class="col-sm-2 col-lg-2 col-md-2"></div>
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <h2>How to Use</h2>
-        <p>There are two resources with accessible data, <code>/rock-stars</code> and <code>/weapons</code>. Use our RESTful API to gather data from each resource or search by ID to grab the associations: <code>/weapons/2</code>.</p>
+    <div class="col-sm-3 col-lg-3 col-md-3"></div>
+    <div class="col-sm-6 col-lg-6 col-md-6">
+        <div class="text-center">
+          <h1>How to Use</h1>
+        </div>
+        <p>There are two endpoints with accessible data, <code>/rock-stars</code> and <code>/weapons</code>. Use our RESTful API to gather data from each resource or search by ID to grab the associations: <code>/weapons/2</code>.</p>
     </div>
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <h2>Posting to the Database</h2>
+    <div class="col-sm-3 col-lg-3 col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-lg-3 col-md-3"></div>
+    <div class="col-sm-6 col-lg-6 col-md-6">
+        <div class="text-center">
+          <h1>Posting to the Database</h1>
+        </div>
         <p>
-          Nobody goes to see their rock 'n roll idols who have forgotten to bring their rigs to the gig, and what good is a guitar if no one ever plays it? In order to post to this database you will need to include at least one artist and one of their weapons of choice so neither will feel useless!
+          Who wants to see their rock 'n roll idols that have forgotten to bring their rigs to the gig? <strong>Nobody.</strong>
         </p>
-        
+        <p>
+          What good is a guitar if no one ever plays it? <strong>It's not.</strong>
+        </p>
+        <p>
+          In order to post to this database you will need to include at least one artist and one of their weapons of choice so neither will feel useless!
+        </p>
+        <p>Send a <code>POST</code> request to the <code>api/star-weapon</code> endpoint, making sure to include the right data package, or just scroll down and use the form!</p>
     </div>
-    <div class="col-sm-2 col-lg-2 col-md-2"></div>
+    <div class="col-sm-3 col-lg-3 col-md-3"></div>
   </div>
 </div>

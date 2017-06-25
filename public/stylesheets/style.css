@@ -1,8 +1,16 @@
-body {
+
+
+body .container{
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 1.5rem "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+p {
+  padding: .5rem;
+  line-height: 1.7;
+  font-size: 1.7rem;
 }
