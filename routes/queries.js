@@ -46,7 +46,21 @@ function postEntity(entity, dataObj, next) {
 }
 
 function editEntity(entity, dataObj, res, next) {
-  res.send('edited!')
+  const {id, image, name, make, model} = dataObj
+  const entityObj = {
+    'rock_stars': {image, name},
+    'weapons': {image, make, model}
+  }
+
+
+  db(entity).where('id', id)
+  .update(entityObj[entity], 'id')
+  .then(response => {
+    res.send(response)
+  })
+  .catch(err => {
+    next(err)
+  })
 }
 
 module.exports = { findAll, findById, postEntity, editEntity }
