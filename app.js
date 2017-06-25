@@ -33,6 +33,7 @@ app.use('/api/star-weapon', star_weapon)
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
+  err.message = 'NOT FOUND\nPlease make sure your GET endpoints start with either "/api/rock-stars" or "/api/weapons", and your POST endpoints start with /api/star-weapon'
   next(err);
 });
 
@@ -43,7 +44,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  const errorMessage = `ERROR! ${err.status} - ${err.message} \nPlease make sure your endpoints start with either '/api/rock-stars' or '/api/weapons'`
+  const errorMessage = `ERROR! ${err.status} - ${err.message}`
 
   res.status(err.status || 500);
   res.send(errorMessage);
