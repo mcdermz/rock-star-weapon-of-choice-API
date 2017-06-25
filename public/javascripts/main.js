@@ -10,9 +10,41 @@ $('#request-btn').click(() => {
   })
 })
 
-$('.hint').on('click', 'i', function (e){
+$('.hint').on('click', 'i', function (e) {
   const endpoint = e.target.innerText
 
   $('#request-url-input').val(endpoint)
   $('#request-btn').click()
+})
+
+$('.post-form-submit').click(function (e) {
+  e.preventDefault()
+  const url = 'http://localhost:3000/api/star-weapon'
+  const $inputs = $('.post-form :input');
+  const data = {}
+
+  $inputs.each(function () {
+    if (this.value) data[this.name] = this.value
+  })
+
+  $.ajax({
+    url,
+    method: 'POST',
+    data
+  })
+  .done(function (response){
+    $('#request-success').removeClass('hidden')
+    $inputs.each(function () {
+      this.value = ''
+    })
+  })
+  .catch(function (){
+    $('#request-fail').removeClass('hidden')
+    $('.form-control').addClass('has-danger')
+  })
+})
+
+$('.post-form input').focus(() => {
+  $('#request-fail').addClass('hidden')
+  $('#request-success').addClass('hidden')
 })

@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-sm-3 col-lg-3 col-md-3"></div>
     <div class="col-sm-6 col-lg-6 col-md-6">
-      <p class="lead">No rock star worth their rhinestones ever hits the stage without brandishing their weapon of choice! Use this API to discover the arsenal of your favorite artists or, vice versa, discover who prefers any particular face-melting instrument.</p>
+      <p class="lead">No rock star worth their rhinestones ever hits the stage without brandishing their weapon of choice! Use this API to discover the arsenal of your favorite artists or find out who prefers any particular face-melting instrument.</p>
     </div>
   </div>
 </div>
@@ -63,8 +63,55 @@
         <p>
           In order to post to this database you will need to include at least one artist and one of their weapons of choice so neither will feel useless!
         </p>
-        <p>Send a <code>POST</code> request to the <code>api/star-weapon</code> endpoint, making sure to include the right data package, or just scroll down and use the form!</p>
+        <p>Send a <code>POST</code> request to the <code>api/star-weapon</code> endpoint, making sure to include the right data package, or just use our handy form!</p>
     </div>
     <div class="col-sm-3 col-lg-3 col-md-3"></div>
   </div>
+  <br>
+  <form class="post-form">
+    <div id="request-success" class="alert alert-success text-center hidden">
+      <strong>Success!</strong> Your POST was made successfully!
+    </div>
+    <div id="request-fail" class="alert alert-danger text-center hidden">
+      <strong>Oh no!</strong> Your POST was unsuccessful!
+    </div>
+    <div class="row">
+      <div class="col-sm-1 col-lg-1 col-md-1"></div>
+      <div class="col-sm-5 col-lg-5 col-md-5">
+        <div class="text-center">
+          <h3>Rock Star</h3>
+        </div>
+        <div class="form-group">
+          <label for="rock-star-name">Name</label>
+          <input name="name" type="text" class="form-control" id="rock-star-name" placeholder="Rock Star name" required>
+        </div>
+        <div class="form-group">
+          <label for="rock-star-image">Image link</label>
+          <input name="rockstarImg" type="text" class="form-control" id="rock-star-image" placeholder="Image link">
+        </div>
+      </div>
+      <div class="col-sm-5 col-lg-5 col-md-5">
+        <div class="text-center">
+          <h3>Weapon of Choice</h3>
+        </div>
+        <div class="form-group">
+          <label for="weapon-make">Make</label>
+          <input name="make" type="text" class="form-control" id="weapon-make" placeholder="Make" required>
+        </div>
+        <div class="form-group">
+          <label for="weapon-model">Model</label>
+          <input name="model" type="text" class="form-control" id="weapon-model" placeholder="Model" required>
+        </div>
+        <div class="form-group">
+          <label for="weapon-image">Image link</label>
+          <input name="weaponImg" type="text" class="form-control" id="weapon-image" placeholder="Image link">
+        </div>
+      </div>
+      <div class="col-sm-1 col-lg-1 col-md-1"></div>
+    </div>
+    <br>
+    <div class="text-center">
+      <button type="submit" class="post-form-submit btn-lg btn-primary">Submit</button>
+    </div>
+  </form>
 </div>
