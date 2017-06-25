@@ -1,6 +1,10 @@
+const urlRoot = window.location.href + 'api/'
+$('document').ready(function (){
+  $('#url-root').text(urlRoot)
+})
 $('#request-btn').click(() => {
   const endpoint = $('#request-url-input').val()
-  const url = 'https://rock-star-weapon-of-choice.herokuapp.com/api/' + endpoint
+  const url = urlRoot + endpoint
 
   $.ajax(url).then(response => {
     $('#responseOutput').empty().append(JSON.stringify(response, null, 2))
@@ -19,7 +23,7 @@ $('.hint').on('click', 'i', function (e) {
 
 $('.post-form-submit').click(function (e) {
   e.preventDefault()
-  const url = 'https://rock-star-weapon-of-choice.herokuapp.com/api/star-weapon'
+  const url = urlRoot + 'star-weapon'
   const $inputs = $('.post-form :input');
   const data = {}
 
