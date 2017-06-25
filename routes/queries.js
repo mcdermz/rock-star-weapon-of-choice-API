@@ -45,4 +45,8 @@ function postEntity(entity, dataObj, next) {
   })
 }
 
-module.exports = { findAll, findById, postEntity }
+function editEntity(entity, dataObj, res, next) {
+  res.send('edited!')
+}
+
+module.exports = { findAll, findById, postEntity, editEntity }
