@@ -35,7 +35,7 @@ function findById(entity1, id, res, next) {
   })
 }
 
-function postEntity(entity, dataObj, res, next) {
+function postEntity(entity, dataObj, next) {
   return db(entity).insert(dataObj, 'id')
   .then(response => {
     return response
