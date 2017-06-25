@@ -41,29 +41,64 @@
   <div class="row">
     <div class="col-sm-3 col-lg-3 col-md-3"></div>
     <div class="col-sm-6 col-lg-6 col-md-6">
-        <div class="text-center">
-          <h1>How to Use</h1>
-        </div>
-        <p>There are two endpoints with accessible data, <code>/rock-stars</code> and <code>/weapons</code>. Use our RESTful API to gather data from each resource or search by ID to grab the associations: <code>/weapons/2</code>.</p>
+      <div class="text-center">
+        <h1><code>GET</code> Requests</h1>
+      </div>
+      <p>There are two endpoints with accessible data, <code>/rock-stars</code> and <code>/weapons</code>. Use our RESTful API to gather data from each resource or search by ID to grab the associations.</p>
+      <pre> <code>http GET ~/api/weapons/2</code></pre>
+      <br>
+      <div class="text-center">
+        <h1><code>PUT</code> Requests</h1>
+      </div>
+      <p>You can use the same endpoints to edit any or all properties of a resource. Just make sure you supply the right parameters.</p>
+      <pre><code>http PUT ~/api/weapons/5 model="Jazzmaster" image="img.jpg"</code></pre>
+      <pre><code>http PUT ~/api/rock-stars/1 image="ledzep.jpg"</code></pre>
+      <div class="text-center">
+        <h1><code>DELETE</code> Requests</h1>
+      </div>
+      <p>We don't trust random internet strangers to delete records from our database! To prove you are worthy, submit a <a href="https://github.com/mcdermz">pull request to the repo</a> for this API and <i>maybe</i> we'll give you full <code>CRUD</code> access.</p>
     </div>
     <div class="col-sm-3 col-lg-3 col-md-3"></div>
   </div>
   <div class="row">
     <div class="col-sm-3 col-lg-3 col-md-3"></div>
     <div class="col-sm-6 col-lg-6 col-md-6">
-        <div class="text-center">
-          <h1>Posting to the Database</h1>
-        </div>
-        <p>
-          Who wants to see their rock 'n roll idols that have forgotten to bring their rigs to the gig? <strong>Nobody.</strong>
-        </p>
-        <p>
-          What good is a guitar if no one ever plays it? <strong>It's not.</strong>
-        </p>
-        <p>
-          In order to post to this database you will need to include at least one artist and one of their weapons of choice so neither will feel useless!
-        </p>
-        <p>Send a <code>POST</code> request to the <code>api/star-weapon</code> endpoint, making sure to include the right data package, or just use our handy form!</p>
+      <div class="text-center">
+        <h1><code>POST</code> Requests</h1>
+      </div>
+      <p>
+        Who wants to see their rock 'n roll idols that have forgotten to bring their rigs to the gig? </br><strong>Nobody.</strong>
+      </p>
+      <p>
+        What good is a guitar if no one ever plays it? </br><strong>It's not.</strong>
+      </p>
+      <p>
+        In order to post to this database you will need to include at least one artist and one of their weapons of choice so neither will feel useless!
+      </p>
+      <p>Send a <code>POST</code> request to the <code>api/star-weapon</code> endpoint, making sure to include the right data package.</p>
+      <p> There are three valid combinations of data packages:</p>
+      <ol>
+        <li>A new association for two existing entities:
+          <pre><code>~/star-weapon rock_stars_id=1
+            weapons_id=5</code></pre>
+        </li>
+        <li>An association for one existing entity and one new entity:
+          <pre><code>~/star-weapon rock_stars_id=2
+            make="Martin"
+            model="12-string"
+            weaponImg="martin.jpg"</code></pre>
+          <pre><code>~/star-weapon weapons_id=2
+            name="Robert Cray"</code></pre>
+        </li>
+        <li>An association for two new entities:
+          <pre><code>~/star-weapon name="Brian May"
+            rockstarImg="queen.jpg"
+            make="Vox"
+            model="Brian May Signature"
+            weaponImg="bmay-sig.jpg"</code></pre>
+        </li>
+      </ol>
+      <p>You will currently need to make an HTTP request to create new associations with an existing entity, but you can use the form below to add two new entities directly!</p>
     </div>
     <div class="col-sm-3 col-lg-3 col-md-3"></div>
   </div>
