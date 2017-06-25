@@ -52,7 +52,6 @@ function editEntity(entity, dataObj, res, next) {
     'weapons': {image, make, model}
   }
 
-
   db(entity).where('id', id)
   .update(entityObj[entity], 'id')
   .then(response => {
