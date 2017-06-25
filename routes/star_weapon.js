@@ -22,7 +22,15 @@ function starWeaponPost(req, res, next) {
       .then(id => {
         query.postEntity('star_weapon', { rock_stars_id: id[0], weapons_id }, res, next)
         .then(final => {
-          console.log(final);
+          res.send(final)
+        })
+      })
+    }
+    else if (!weapons_id && make && model) {
+      query.postEntity('weapons', { make, model, image: weaponImg }, res, next)
+      .then(id => {
+        query.postEntity('star_weapon', { rock_stars_id, weapons_id: id[0] }, res, next)
+        .then(final => {
           res.send(final)
         })
       })
