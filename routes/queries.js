@@ -11,7 +11,6 @@ function findAll(entity, res, next) {
 }
 
 function findById(entity1, id, res, next) {
-  console.log(id);
   const entitySelect = (entity1 === 'rock_stars') ?
     `${entity1}.name, ${entity1}.image` :
     `${entity1}.make, ${entity1}.model, ${entity1}.image`

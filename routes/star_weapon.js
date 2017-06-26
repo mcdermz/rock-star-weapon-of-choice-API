@@ -41,8 +41,8 @@ function starWeaponPost(req, res, next) {
   }
   else if (make && model && name){
     return Promise.all([
-      query.postEntity('rock_stars', { name }, next),
-      query.postEntity('weapons', { make, model }, next)
+      query.postEntity('rock_stars', { name, image: rockstarImg }, next),
+      query.postEntity('weapons', { make, model, image: weaponImg }, next)
     ])
     .then(response => {
       const rock_stars_id = response[0][0]
